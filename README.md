@@ -16,3 +16,22 @@ To run (Windows):
    npm run build
 
 If you encounter native build errors for sqlite3, try Node 20 LTS or run on GitHub Actions (windows-latest) to create installer.
+
+## 📸 Screenshots
+
+### 🖥️ Client
+![Dashboard](screenshots/optical-client.png)
+
+---
+
+### 📅 Payment
+![Booking](screenshots/optical-payment.png)
+
+
+## License
+
+This project is proprietary and is not open for public use, distribution, or modification without explicit permission from the author.
+
+© Vishav Bandhu. All rights reserved.
+For commercial usage or licensing inquiries, 
+please contact: mr.kaith@gmail.com Website:https://www.itsbegin.in/
