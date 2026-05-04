@@ -1,0 +1,66 @@
+{
+  "name": "takkar-opticals",
+  "version": "1.0.0",
+  "description": "Desktop application for Takkar Opticals built with Electron and React",
+  "author": "Vishav Kaith",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "start-main": "electron .",
+    "start-renderer": "cd renderer && npm run dev",
+    "dev": "concurrently \"npm run start-main\" \"npm run start-renderer\"",
+    "build-renderer": "cd renderer && npm run build",
+    "build": "npm run build-renderer",
+    "rebuild": "npx electron-rebuild",
+    "dist": "npm run build-renderer && electron-builder"
+  },
+ "build": {
+  "appId": "com.takkar.opticals",
+  "productName": "Takkar Opticals",
+  "copyright": "© 2025 Vishav Kaith",
+  "directories": {
+    "buildResources": "assets",
+    "output": "dist"
+  },
+  "asar": false,
+  "files": [
+    "main.js",
+    "preload.js",
+    "renderer/dist/**/*",
+    "db/**/*",
+    "node_modules/**/*",
+    "package.json"
+  ],
+  "extraResources": [
+    {
+      "from": "node_modules/better-sqlite3/build/Release/better_sqlite3.node",
+      "to": "better_sqlite3.node"
+    }
+  ],
+  "win": {
+    "target": "nsis",
+    "icon": "assets/icon.ico"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": true,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Takkar Opticals"
+  }
+},
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.6.4",
+    "electron-devtools-installer": "^4.0.0",
+    "electron-rebuild": "^3.2.9"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.6.0",
+    "electron-is-dev": "^3.0.1",
+    "fs-extra": "^11.2.0",
+    "json2csv": "^6.0.0-alpha.2"
+  }
+}

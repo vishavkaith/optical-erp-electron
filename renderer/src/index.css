@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* system theme colors */
+:root { --bg: #f7fafc; --card: #ffffff; --accent: #2563eb; --text: #0f172a; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0b1220; --card: #071229; --accent: #60a5fa; --text: #e6eef8; }
+}
+body { background: var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+.header { background: var(--accent); color: white; padding: 12px 18px; font-weight: 600; }
+.container { max-width: 1200px; margin: 18px auto; padding: 0 12px; display: flex; gap: 18px; }
+.left { width: 360px; }
+.card { background: var(--card); padding: 12px; border-radius: 8px; box-shadow: 0 2px 10px rgba(2,6,23,0.08); }
+.button { background: var(--accent); color: white; padding: 8px 12px; border-radius: 6px; }
+.table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.table th, .table td { padding: 8px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+/* Hide number input spinners as a fallback (modern browsers) */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* When an overlay (Modal/Sidebar) is open we set a body class 'overlay-open'.
+   Disable pointer interactions on the main app root so focus/clicks go to the overlay only.
+   This helps avoid flaky cases where an underlying element (or stale overlay) captures
+   mouse/focus and makes inputs appear disabled until DevTools or a reflow occurs. */
+body.overlay-open #root {
+  pointer-events: none;
+  user-select: none;
+}
+/* Ensure overlay root remains interactive */
+body.overlay-open #modal-root {
+  pointer-events: auto;
+}
